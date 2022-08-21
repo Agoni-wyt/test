@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度提示词</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="myunitl.js"></script>
+    <script>
+        window.onload = function(){
+            var btn = document.querySelector("#btn");
+            btn.onclick = function(){
+                var keywordValue = document.querySelector("#keyword").value;
+                //跨域必须使用打他Type:"jsonp"，来指定key值
+                $.ajax({
+                    url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+                    data:{wd:keywordValue},
+                    success:function(data){
+                        console.log(data)
+                    },
+                    dataType:"jsonp",
+                    jsonp:"cb",
+                    
+                })
+                
+                
+                /* myAjax({
+                    url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+                    data:{:keywordValue},
+                    success:function(data){
+                        console.log(data);
+                    },
+                    jsonp:"cb",
+                    jsonpCallback:"haha"
+
+                }) */
+
+
+                /* var script = document.
+                createElement("script");
+                script.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+keywordValue+"&cb=haha";
+            window["haha"] = function(data){
+                console.log(data);
+                
+                var liTag = "";
+                for(var i=0;i<data.s.length;i++){
+                    var temp = data.s[i];
+                    var tempSug = temp[0];
+                    liTag += "<li>"+tempSug+"</li>"
+                    // console.log(liTag)
+                }
+                var ulTag = document.querySelector("ul");
+                ulTag.innerHTML = liTag;
+            }
+
+            var head = document.querySelector("head");
+            head.appendChild(script); */
+
+
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <input type="text" id="keyword" placeholder="请输入关键字">
+    <input type="button" id="btn" value="查询">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    
+</body>
+</html>

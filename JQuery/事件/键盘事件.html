@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+
+
+
+    <script>
+        /* 
+        .keydown()      在键盘按下时被触发，它可以绑定到任何元素，但是该事件只是发生在具有焦点的元素上，表单元素是最合适的
+        .keypress()     在敲击键盘时被触发，按下并抬起同一个键。
+        .keyup()        在按键被释放时被触发，按下并抬起同一个键
+    常用键盘按键对应代码
+    Backspace <----------> 8
+    Tab <----------> 9
+    Clear <----------> 12
+    Enter <----------> 13
+    Shift <----------> 16
+    Control <----------> 17
+    Alt <----------> 18
+    Caps Lock <----------> 20
+    Esc <----------> 27
+    空格键 <----------> 32
+        keydown-->keypress-->keyup
+
+        */
+
+        // $(document).keydown(function(event){
+        //     alert(event.keyCode);
+        // })//按键盘，显示键盘对应代码
+
+        // $(document).keydown(function(event){
+        //     alert("keydown");
+        // })//按键盘，显示keydown
+
+        // $(document).keypress(function(event){
+        //     alert("keypress");
+        // })//按键盘，显示keypress
+
+        $(document).keyup(function(event){
+            alert("keyup");
+        })//按键盘，显示keyup**只有在keydown和keypress没有触发时才执行
+    </script>
+    </body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>Ajax简介
+        <p>
+            1.Ajex作用：获取服务器数据
+            <br>
+            2.Ajex效果：在不刷新整个页面的情况下，通过一个叫url地址获取服务器数据，然后进行页面的-布局-刷新。
+            <br>
+            场景：评论加载效果；用户名验证
+            <br>
+            Ajax 的全称： Asynchronous Javascript And XML ，就是使用 JS 代码获取服务器数据。
+            <br>
+            局部刷新：新数据追加在后面
+            异步加载：加载服务器数据时，仍然可以操作
+        </p>
+    </div>
+    <div>基础知识
+        <P>
+        <ul> 概念层面上的差异：
+            <li>服务器：能够提供某种服务的电脑</li>
+            <li>客户端：想使用服务器所提供服务的电脑</li>
+        </ul>
+        <br>
+        <ul>硬件层面上的差异：
+            <li>服务器：由于要给千千万万个客户端提供服务，因此一般来说，服务器的硬件配置要高一些</li>
+            <li> 客户端：个人电脑、手机、平板等都可以称作为客户端，对硬件配置并没有太高的要求。</li>
+        </ul>
+        <div>服务器能提供什么服务
+            <br>服务器提供的服务在生活当中经常使用，比如说通过浏览器来访问www.baidu.com，使用的就是百度服务器给的网页服务。在之前这幅图当中，用户a发信息给用户b使用的是腾讯服务器提供的聊天服务，用户a想发封邮件给用户b，就需要使用到服务器所提供的邮箱服务。服务器提供各种各样的服务，经常常见的网页服务、邮箱服务、文件上传下载也就是通常所说的ftp服务或者聊天服务等等等等......
+        </div>
+        <div>服务器软件
+            <br>服务器就是提供服务的，它所提供的服务是由这台服务器所安装的操作系统中所安装的一些软件来进行提供的，客户端就是使用服务器所提供的服务。
+            <br>服务器是由操作系统加上软件结合起来对外提供服务的。
+            <br>
+            <p> ipconfig:查看本机ip</p>
+
+        </div>
+        <p>查看域名的 IP ： ping baidu.com</p>
+        <div>DNS 域名解析服务器
+            <p>
+                在浏览器当中输入qq.com这个域名后，先向DNS的服务器去进行查询qq.com所对应的IP地址。当DNS得到这个IP地址之后，将IP地址进行返回给个人电脑，比如说它返回一个IP地址是123.10.10.3，这样一个IP地址返回给个人电脑，个人电脑拿到这个IP地址之后将会把这个IP地址作为它的目标来进行访问，通过电信的路由器来进行访问。会去向电信的路由器进行询问和查找，我现在要访问123.10.10.3这台服务器请你帮我找到他，电信的路由器就会在它的路由表当中来找到QQ的这台服务器，这个就是一个域名和IP地址内部的一个处理的流程。有一个叫做DNS的域名解析服务器，通过DNS域名解析服务器就可以很容易的找出域名和IP地址的一个映射关系好。
+            </p>
+            <p>
+                当在浏览器敲入baidu.com或者qq.com任意一个域名之后，其实它内部做的第一件事情并不是去找DNS服务器，它会先在个人电脑的一个文件当中去读取是否有这个域名对应的IP地址信息。
+                <br>
+
+                这个文件名叫做hosts，里面可能会记录住域名和IP地址的一个映射关系，路径为C:\Windows\System32\drivers\etc\HOSTS。
+                <br>
+                通过记事本的方式打开，这个文件其实是记录在自己本机当中域名和IP地址的一个映射关系，一般来说都是没有任何内容，如果有特殊需求，需要在里面加上一些相关的一个映射关系。
+            </p>
+            <p>
+                DNS 叫做域名解析服务器，提供域名与 IP 地址的映射关系。
+                <br>
+                访问服务器的流程：本机 hosts 文件--> DNS 服务器-->服务器
+                <br>
+                本机hosts文件的路径：
+                C:\Windows\System32\drivers\etc\HOSTS
+            </p>
+        </div>
+        <div>端口：
+            <p>域名是方便人们进行记忆的。DNS是维护着域名和IP地址的一个映射关系，所以可以通过域名访问到服务器。</p>
+            <p>其实每一次访问网页的时候，请求使用的是百度服务器所提供的网页服务，完整的写法应该是在域名后面:80，80代表访问这台服务器的80端口。百度服务器的80端口提供的就是网页服务，其实我们每次访问网页最完整的写法应该是
+                http://www.baidu.com:80，使用这台服务器当中80端口所提供的服务。80端口是比较特殊的一个端口号，可以不写。</p>
+
+        </div>
+        <span>IP 地址是用来查找某一台服务器的。域名是方便人们记忆的。 DNS 维护着域名和 IP 地址的映射关系。端口是用来区分一台服务器上提供的不同服务的。</span>
+        </P>
+        <div>
+            一、通信协议<br>
+            协议就是事先规定好的规则。
+            <p>客户端访问服务器，通过 IP 地址和端口已经找到了这台服务器了，这时候就认为是两台计算机在交流。传输的数据必须满足规范，这样才能看得懂。协议可以简单的认为是两台计算机交流时所说的话。</p>
+            <p><b> 常见的协议</b><br>
+                HTTP 、 HTTPS 超文本传输协议、FTP 文件传输协议、SMTP 简单邮件传输协议</p>
+        </div>
+        <div>
+            <p>
+                在 HTTP 协议中，需要大致了解的是：请求头、响应头、请求体、响应体。<br>
+
+                在百度访问当中以打开调试工具，在调试工具里面可以点开network，现在进行一个界面的一个刷新操作。但刷新完之后，我们可以来滑到最顶部，点开百度。<span> </span>
+                在baidu.com这个网址的右边会出现关于HTTP协议的一些内容，比如说在这个地方有一个response hand叫做响应头，request
+                hand叫做请求头，还有response这是具体响应的内容。<br>
+                这里面相关的一些简单的介绍，在请求头当中这个浏览器就会告诉百度的服务器，我将会接受怎么样的一种数据格式，将会接受哪一种压缩格式，而当前的语言是中文等等一系列的信息，浏览器就通过请求头的方式来告诉百度服务器。<br>
+
+                百度服务器在得到这些信息之后肯定是要做出响应，让他有响应头，在响应头当中也有相关的一些格式、压缩的一些要求，然后最终还在这个地方有一个具体的响应体。<br>
+
+                在响应体这里面就是HTML的页面，所以所谓的协议就是来规定进行网页数据交互的时候要访问某一个网页，他们之间进行数据交互所需要满足的一定规范。<br>
+
+                在前端的开发过程当中对于HTTP的协议，需要大致了解的是请求头、响应头。<br>
+            </p>
+        </div>
+        <div>
+            <b>Wamp</b>
+            <p>Wamp 指的是： Windows 、 apache 、 mysql 、php 几个服务器软件的缩写，类似的还有 Lamp ： linux 、 apache 、 mysql 、 php <br>
+                我们安装 wamp 可以认为把我们的电脑变成了一台服务器，服务器是提供服务的。
+                Wamp 可以让我们的电脑提供网页服务。其他电脑只需要通过 IP 地址或者域名就能够访问到对应的 HTML 界面。</p>
+            <p><b>Wamp 的安装</b>
+                选择合适你操作系统的安装包，双击安装之后一路 next 即可完成安装。安装完成后，运行服务，当右下角的图标变为绿色，即代表服务安装成功。
+                接下来将我们需要以服务方式分享给别人看的 html 文件放到 C:\wamp\www 目录下即可。
+                打开浏览器输入localhost/127.0.0.1 将会一个界面，如果出现这样一个界面就代表这个软件已经正常运行了</p>
+            <p>点击 www.directory 按钮，只需要将 login.html 复制进这个目录，通过 127.0.0.1/login.html 就可以访问到所写的页面中。
+                在虚拟机中打开浏览器，需要输入自己电脑的IP地址，在自己电脑的cmd中通过ipconfig的方式查看，在虚拟机中输入 192.168.31.204/login.html ，因为没有权限访问不了。</p>
+            <b>Wamp 的简单配置</b>
+            <p>1. 配置访问权限，默认情况下， apache 提供的网页服务只允许 localhost 和 127.0.0.1进行访问，我们需要对配置文件进行修改。
+                配置文件位于：
+                C:\wamp\bin\apache\Apache2.4.4\conf\httpd.conf 将268行的 Deny from all 改为 Allow from
+                all保存后重启wamp的服务。打开虚拟机点击刷新，login.html网页将能正常访问。
+                266 # onlineoffling tag - don’t remove
+                267 order Deny,Allow
+                268 Allow from all
+                269 Allow from 127.0.01
+                270 Allow from::1
+                271 Allow from localhost </p>
+            <p>2. 网站根路径的配置，默认情况下，网站的根路径为 C:\wamp\www ，在此目录下的文件才可以以服务的方式提供给别人看，如果你不想使用这个目录，也可以进行修改。修改
+                C:\wamp\bin\apache\Apache2.4.4\conf\httpd.conf 文件，将 DocumentRoot 进行修改，
+                如下
+                239 DocumentRoot “d：/myweb’’
+                240 <Directory ‘’ d:/,myweb’’>
+                    在wamp中创建一个新的test.html文件。
+                    <!DOCTYPE html>
+                    <html lang="en">
+
+                    <head>
+                        <meta charset="utf-8">
+                        <title>测试界面</title>
+                    </head>
+
+                    <body>
+                        测试界面OK
+                    </body>
+
+                    </html>
+                    保存后回到虚拟机，输入192.168.31.204/test.html 回车将会成功访问。</p>
+            <p>
+               <b>（1）域名的查找关系</b> 
+                通过 www.zhangsan.com 这个域名访问到对应的HTML界面。
+                要进行域名的访问需要通过DNS服务器，DNS服务器会返回这个域名所对应的IP地址，从而找到对应的服务器。在虚拟机已经通过 www.zhangsan.com 找到互联网上真实存在的那台服务器。
+                选择想提供 www.zhangsan.com 这样的域名来访问到我们自己的界面，正规的情况应该是将这个域名申请下来，这样DNS里才会有域名和IP地址的对应关系。
+                但是这个域名已经被申请了，可以先从本机的 hosts 文件查找 IP 地址和域名的映射关系，找到所想要访问的那台服务器，这样可以绕过DNS服务器。
+                更改虚拟机的hosts文件，C:/Windows/system32/drivers/etc，备份hosts文件，以记事本的方式打开，增加192.168.31.204 www.zhangsan.com
+                IP地址和域名的映射关系，因为没有权限所以需要做下面的步骤。
+                在 Windows 系统中搜索 notepad ，单击右键以管理员的方式进行运行，打开刚才的 hosts 文件，更改虚拟机上的 hosts 文件，增加一条 IP 地址和域名的映射关系，保存并关闭。
+                此时， zhangsan.com 这个域名已经被映射到了我们自己的服务器上了。
+                这时候回到虚拟机中刷新页面将会出现一个页面，此时已经可以访问服务器下面的文件。
+            </p>
+            <p><b>配置</b>
+                如果一台服务器想提供多个站点，那么就需要对虚拟主机进行配置。
+更改配置文件前，需要做备份操作。
+不同的站点对应不同的域名。
+
+A. 打开 http.com 文件<br>
+
+B. 打开 
+C:\wamp\bin\apache\Apache2.4.4\conf\extra\httpd-vhosts 文件<br>
+
+C. 打开 C:\Windows\System32\drivers\etc\HOSTS 文件<br>
+
+D. 配置虚拟站点<br>
+你想让你的服务器有几个站点就配置几个 VirtualHost 的标签。增加两个站点，一个是 zhangsan.com 的站点，一个是 lisi.com 的站点，每一个站点都会有对应的目录。
+（1） 将 zhangsan 这个文件夹作为 zhangsan.com 的根路径， lisi 作为 lisi.com 的根路径，
+修改为 DocumentRoot “d:/myweb/zhangsan”，域名修改为 ServerName www.zhangsan.com 
+VirtualHost *:88
+DocumentRoot “d:/myweb/zhangsan”
+ServerName www.zhangsan.com
+/VirtualHost
+以上就是我们配置的第一个虚拟站点。
+（2）第二个虚拟站点
+VirtualHost *:88
+DocumentRoot “d:/myweb/lisi”
+ServerName www.lisi.com
+/VirtualHost
+配置完成后要记得进行重启操作 Restart Service 。
+将 text.html 文件分别复制到 zhangsan 和 lisi 这两个文件夹中。
+修改zhangsan目录下的文件
+
+通过 IP 地址查询会访问不到，这是因为这个 IP 地址里配置了两个网站。
+E. 服务器更改 hosts 文件
+打开 C:\Windows\System32\drivers\etc\HOSTS 文件
+配置两个域名
+127.0.0.1   www.zhangsan.com
+127.0.0.1   www.lisi.com
+在 Windows 系统中搜索 notepad ，单击右键以管理员的方式进行运行，打开刚才的 hosts 文件，更改虚拟机上的 hosts 文件，增加一条 IP 地址和域名的映射关系 192.168.31.204  www.lisi.com ，保存并关闭。
+此时,lisi.com 这个域名已经被映射到了我们自己的服务器上了。
+
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

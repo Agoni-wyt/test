@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册界面</title>
+    <script type="text/javascript">
+        //uname = zhangsan&age=18
+        function myAjax(type,url,params,datatype,callback){
+            //1 2 3 4
+            var xhr = null;
+            if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+            }else{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            if(type == "get"){
+                url += "?" + params; 
+
+            }
+            xhr.open(type,url,true);
+            if(type == "get"){
+                xhr.send(null);
+            }else if(type == "post"){
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+                xhr.send(param);
+            }
+
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            var result = null;
+                            if(datatype == "josn"){
+                                result = xhr.responseText;
+                                result = JSON.parse(result);
+                            }else if(datatype == "XML"){
+                                result = xhr.responerXML;
+                            }else{
+                                result = xhr.responseText;
+                            }
+                            
+                            callback(result);
+                            
+                        }
+                }
+            }
+            
+
+
+        }
+        
+
+
+        window.onload = function(){
+            var username = document.querySelector("#username");
+            var email = document.querySelector("#email");
+            var phone = document.querySelector("#phone");
+
+            username.onblur = function(){//tab键后触发
+                // console.log("onblur");
+                var usernameValue = username.value;
+                //将usernameValue提交给服务器，服务器进行唯一性校验
+                // 1、创建对象、兼容处理
+                var xhr = null;
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }else{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                //2、准备发送
+                //url地址，取决于接口文档,地址？参数名=输入的参数值
+                xhr.open("get","./checkUserName.php?uname="+username,true);
+                //3、执行发送
+                xhr.send(null);
+                //指定回调函数
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            var result = xhr.responseText;
+                            console.log(result);
+                            var username_result = document.querySelector("#username_result");
+                            if(result == "ok"){
+                                username_result.innerHTML = "用户名可以使用"
+                            }else{
+                                username_result.innerHTML = "用户名已经被注册"
+                            }
+
+                        }
+                    }
+                }
+
+            }
+        
+            email.onblur = function(){
+                var emailValue = email.value;
+                var xhr = null;
+                if (window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }else{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var param = "e="+emailValue;
+                xhr.open("post","./checkEmail.php",true);
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+                xhr.send(param);
+
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            var result = xhr.responseText
+                            // console.log(result);
+                            var email_result = document.querySelector("#email_result");
+                            if(result == 0){
+                                //邮箱可用
+                                email_result.innerText = "邮箱可用";
+                            }else{
+                                // 邮箱不可用
+                                email_result.innerText = "邮箱不可用"
+                            }
+                        }
+
+                    }
+                }
+            }
+        
+            phone.onblur = function(){
+                var phoneValue = phone.value;
+                var xhr = null;
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }else{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xhr.open("post","checkPhone.php",true);
+                var params = "phonenumber="+phoneValue;
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                xhr.send(params);
+
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            var result = xhr.responseText//xml格式使用，responseXML;由服务器返回数据，决定我们显示的字符串
+                            result = JSON.parse(result);
+                            var phone_result = document.querySelector("#phone_result");
+                            if(result.status == 0){
+                                //手机号码可用
+                                phone_result.innerText = result.massage.tips + ","+result.massage.phonefrom;
+                            }else if(result.status == 1){
+                                //手机号码不可以
+                                phone_result.innerText = result.massage;
+                            }
+
+                        }
+                    }
+                    
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>注册界面</h1>
+    <form action="">
+        用户名：<input type="text" id="username"><span id="username_result"></span><br>
+        邮箱：<input type="text" id="email"><span id="email_result"></span><br>
+        手机号码：<input type="text" id="phone"><span id="phone_result"></span><br>
+    </form>
+    
+</body>
+</html>

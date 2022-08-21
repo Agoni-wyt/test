@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            /* 、
+            使用步骤：
+            1.创建XMLHttpRequest对象
+
+            2.准备发送网络请求
+
+            3.开始发送网络请求
+
+            4.指定回调函数
+            
+            */
+            
+            window.onload = function(){
+                // 应使用js代码进行checkUserName.php这个文件的访问，将username传递给PHP文件
+                var btn =document.getElementById("btn");
+                btn.onclick = function(){
+                    // console.log("123");
+                    var username = document.getElementById("username").value;
+                    // console.log(username);
+                    
+
+            //1 、创建XMLHttpRequest这个对象,注意兼容处理，IE6
+                    // var xhr = new XMLHttpRequest();
+                    
+                    /* 需要注意的是，对于一些低版本的浏览器，它里面可能是没有“XMLHttpRequest”这个对象的定义，特别是IE浏览器，IE6就没有这个对象，所以需要做一个兼容的处理 */
+
+                    // 先做一个能力的测试，先看window下面有没有“XMLHttpRequest”这个对象，如果有，在进行“new” 这样一个操作，所以把变量改为“null”并重新“new”一个“XMLHttpRequest”对象，否则就代表是IE6这个浏览器；
+                    var xhr = null;
+                    if(window.XMLHttpRequest){
+                        xhr = new XMLHttpRequest();
+                    }else{
+                        //IE6浏览器，换一种固定的写法
+                        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+
+            //2、准备发送请求条件
+                    //open("获取方式get/post","获取的url地址，php?xxx="+输入的参数,同步true/异步false)
+                    /* 以下三个参数介绍：
+                        Ⅰ “get”请求和“post”请求。取决于需要访问的接口文件，这是后台人员已经写好了的.
+                        Ⅱ 多个参数使用 & 连接，地址栏需要携带参数。
+                        Ⅲ 通常情况下是可以不写的，不写代表异步，写了代表同步，“fasle”代表同步，“true”代表异步， */
+                    xhr.open("get","checkUserName.php?username="+username,true);
+
+/*                     // 若为post
+                    xhr.open("post","checkUserName.php"+username,true); */
+
+            //3、执行发送 
+                    /* “get”请求是在“url”后面的，而“post”请求是在请求体当中的。所以“post”请求中地址栏中是不带参数的，“post”请求中的请求体是在“send”方法后的参数中的，重新定义一个“param”方法，再放入“send”方法的后面， */
+                    xhr.send(null);//执行发送效果，get使用-null
+
+
+/*                   // 若为post,参数应放在请求体中即send()的()中
+                    var param = "username="+username;
+                    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")//设置xhr的请求头信息，这个步骤仅仅是针对于post请求才有的
+                    xhr.send(param); */
+
+            //4、设置回调函数，返回的值
+                    /* 1、“xhr.readyState == 4”代表xhr的状态正确。
+                       2、“xhr.status”代表服务器所返回的状态，一般这两个写法都是非常固定的。 */
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState == 4){//”这个“==4”代表状态是正确的，
+                            if(xhr.status == 200){//这个“==200”代表服务器响应正常
+                                var result = xhr.responseText;//得到echo出来的字符串
+                                // console.log(result);
+                                document.getElementById("result").innerText = result;//局部页面的刷新。
+                            }//显示结果在行内  
+                        }  //在以上这两个“if”的包装下,才能得到正确的数据。
+                    }
+                };
+            };
+
+        </script>
+         
+    </head>
+    <body>
+    <h1>注册界面</h1>
+    <!-- 界面局部刷新 -->
+    <form action="check.php" method="get"><!--  //在form表单中进行请求，action 就是点击时请求的后端界面，method中可以是get请求，也可以是post请求。 -->
+        
+        用户名：<input type="text" name="username" id="username">
+        <input type="button" value="验证用户名" id="btn"> 
+        <span id="result"></span>
+        <br>
+        密码：<input type="password" name="password"><br>
+        <input type="submit" value="提交">
+
+    </form>
+    </body>
+</html>
+
+</html>

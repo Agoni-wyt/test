@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度提示词</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="myunitl.js"></script>
+    <script src="arttemplate.js"></script>
+    <script type="text/html" id="resultTemplate">
+        <!-- // 1.定义模板的type=text/html 2.给模板一个id -->
+    <ul>
+        {{each s as value i}}
+        <li>
+            <div>
+                <span>结果{{i+1}}：</span>
+                <span>{{value}}</span>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    </script>
+
+    <script>
+        window.onload = function () {
+            var btn = document.querySelector("#btn");
+            btn.onclick = function () {
+                var keywordValue = document.querySelector("#keyword").value;
+                //跨域必须使用打他Type:"jsonp"，来指定key值
+                $.ajax({
+                    url: "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+                    data: { wd: keywordValue },
+                    success: function (data) {
+                        // console.log(data);
+                        // 使用模板引擎
+                        // 将数据和模板结合起来，生成html片段
+                        var html = template("resultTemplate", data);
+                        console.log(html);
+                        var divResult = document.querySelector("#divResult");
+                        divResult.innerHTML = html;
+
+
+                        /*  var liTag = "";
+                         for (var i = 0; i < data.s.length; i++) {
+                             var temp = data.s[i];
+                             // var tempSug = temp[0];
+                             // liTag += "<li>" + tempSug + "</li>"
+                             liTag += "<li><div><span>结果"+i+"：</span><span>"+temp+"</span></div> </li>"
+                         } //字符串拼接的方法较为麻烦 */
+
+
+                    },
+                    dataType: "jsonp",
+                    jsonp: "cb",
+
+                })
+
+
+                /* myAjax({
+                    url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+                    data:{:keywordValue},
+                    success:function(data){
+                        console.log(data);
+                    },
+                    jsonp:"cb",
+                    jsonpCallback:"haha"
+
+                }) */
+
+
+                /* var script = document.
+                createElement("script");
+                script.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+keywordValue+"&cb=haha";
+            window["haha"] = function(data){
+                console.log(data);
+                
+                var liTag = "";
+                for(var i=0;i<data.s.length;i++){
+                    var temp = data.s[i];
+                    var tempSug = temp[0];
+                    liTag += "<li>"+tempSug+"</li>"
+                    // console.log(liTag)
+                }
+                var ulTag = document.querySelector("ul");
+                ulTag.innerHTML = liTag;
+            }
+
+            var head = document.querySelector("head");
+            head.appendChild(script); */
+
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <input type="text" id="keyword" placeholder="请输入关键字">
+    <input type="button" id="btn" value="查询">
+    <div id="divResult">
+        <ul>
+
+            <li>
+                <div>
+                    <span>结果：1</span>
+                    <span>1</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>结果：2</span>
+                    <span>2</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>结果：3</span>
+                    <span>3</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>结果：4</span>
+                    <span>4</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>结果：5</span>
+                    <span>5</span>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+
+</body>
+
+</html>

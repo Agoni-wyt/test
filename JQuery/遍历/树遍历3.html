@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+<!-- 1,2,3
+        <ul class="one" style="position: absolute;">
+            <li>li 1</li>
+            <li class="two" style="position: relative;">li 2
+                <ul class="three">
+                    <li>item 1</li>
+                    <li class="inner">item 2</li>
+                    <li>item 3</li>
+                </ul>
+            </li>
+            <li>li 3</li>
+            <li>li 4</li>
+            <li>li 5</li>
+            <div>2</div>
+            <div>3</div>
+        </ul> -->
+
+        <div class="c1">
+            <ul class="c2">
+                <li class="c3">li 1
+                    <ul class="c4">
+                        <li>item 1</li>
+                        <li>item 2</li>
+                        <li>item 3</li>
+                        <li>item 4</li>
+                    </ul>
+                </li>
+                <li>li 2</li>
+                <li>li 3</li>
+            </ul>
+        </div>
+
+        <script>
+/* 1
+            $(function(){
+                $("li.inner").parent("ul").css("border","1px solid green");
+            }) */
+/* 2
+            $(function(){
+                console.log($(".three").parents("ul"));//ul.one
+            }) */
+/* 3
+            $(function(){
+                console.log($(".inner").offsetParent());//不接受参数。li.two
+            }) */
+
+            $(function(){
+                console.log($(".c4").parentsUntil(".c1","ul"));//ul.c2
+
+            })
+
+            /* 
+            .parent()           取得匹配元素集合中，每个元素的父元素，可以提供一个可选的选择器。与 children 方法是类似的，区别是一个选择子元素，一个选择父元素。同样，它们的方法以及参数也是相似的。
+
+            .parents()          获得集合中每个匹配元素的祖先元素，可以提供一个可选的选择器作为参数。.parent()方法只能返回一级父元素，.parents()方法可以返回所有的祖先元素。
+
+            .offsetParent()     取得离指定元素最近的含有定位信息的祖先元素。含有定位信息的元素指的是，CSS 的 position 属性是 relative, absolute, 或 fixed 的元素。这个方法的用处是对于计算元素的位置非常方便，计算位置可以帮助实现动画，或者是将元素放在特定的位置。这个方法不接受任何参数。
+
+            .parentsUntil()     查找当前元素的所有的前辈元素，直到遇到选择器，DOM 节点或 jQuery 对象匹配的元素为止，但不包括这些元素。此方法与.nextuntil是相似的，以及参数用法等都相似。
+            */
+        </script>
+    
+    </body>
+</html>

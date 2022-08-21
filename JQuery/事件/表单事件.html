@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+
+    </head>
+    <body>
+        <!-- <form >
+            <input type="text" id="target" value="field 1">
+            <input type="text" value="field 2">
+        </form> -->
+        <form id="target">
+            <input type="submit" value="go">
+        </form>
+
+    <script>
+        /* 
+        .focus()    获得焦点
+        .blur()     失去焦点
+        .change()   改变元素值会触发，仅限于 input 、 textarea 、 select 三个元素
+        .select()   当用户在一个元素中进行文本选择时则会触发,仅限于 input 、 type=”text” 、 textarea 三个元素
+        .submit()   当用户试图提交表单时会被触发，只能绑定到 form
+        
+        
+        */
+        $(function(){
+            // $("#target").select(function(){
+            //     alert("选中内容");
+            // })
+            $("#target").submit(function(){
+                alert("确定提交吗？")
+            })
+        })
+    </script>
+    </body>
+</html>

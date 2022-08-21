@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    </body>
+    <script>
+        var str = '123';
+        var k = str.length;
+        console.log(k);//3
+
+        //包装对象
+        // 三种原始类型 数值，字符串，布尔
+        // 原始类型的数据在一定条件下可以自动转为对象，这就是包装对象
+
+        var v1 = new Number(123);
+        console.log(v1);//Number {123}
+
+        //原始值，可以自动当作对象来调用，可以调用各种属性及方法
+        //如果包装对象使用完成，会自动立即销毁
+
+        var a = '456';
+        a.length;
+
+        //标准库对象：数学对象，日期对象，数组对象，字符串对象。。。
+
+    </script>
+</html>

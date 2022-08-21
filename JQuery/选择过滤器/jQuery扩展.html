@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+        <style>
+            .outter{
+                width: 300px;
+                height: 300px;
+                background-color: red;
+            }
+            .inner{
+                width: 50px;
+                height: 50px;
+                background-color: aqua;
+                display: none;/*隐藏*/
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <table border="1">
+            <tr><td>index 0</td></tr>
+            <tr><td>index 1</td></tr>
+            <tr><td>index 2</td></tr>
+            <tr><td>index 3</td></tr>
+            <tr><td>index 4</td></tr>
+        </table> -->
+        <div class="outter">
+            <div class="inner">hidder</div>
+        </div>
+    <script>
+        // $(function(){
+        //     $("table tr:even").css("background","red");
+        // })
+        $(function(){
+            $(".outter .inner:hidden").css("display","block")//显示
+        })
+
+        // 可见性过滤
+        // $(":hidden") 选择所有隐藏的元素
+        /* 
+        元素可以被认为是隐藏的机构情况：
+        1   他们的CSS display值是none
+        2   他们是type="hidden"的表单元素
+        3   他们的宽度和高度都设置为0
+        4   一个祖先元素是隐藏的，因此该元素是不会在页面上显示的
+        */
+
+        // $(":visable")选择所有可见的元素
+        /* 
+        如果元素占据文档中一定的空间，元素被认为是可见的，可见元素的宽度或高度是大于0的
+        所以，元素的visibility：hidden或opacity：0被认为是可见的，因为他们任然占用空间布局
+
+        不在文档中的元素被认为隐藏的；jQuery没有办法知道他们是否是可见的，因为元素可见性依赖于适用的样式
+        
+        隐藏元素上做动画，元素被认为是可见的，直到动画结束。显示元素上做动画，在动画的开始处该元素被认为是可见的
+        */
+    </script>
+    </body>
+</html>

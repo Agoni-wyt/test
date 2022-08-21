@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 前端界面都是由标签构成的，所以前端界面的渲染主要做的就是生成html标签。
+
+生成html标签就通过拼接字符串的方式来实现。这种方式在标签结构比较复杂的情况之下很不好操作和后期的维护，并且容易出错。
+
+所以有一种技术叫做模板引擎,通过模板引擎可以很方便的生成html标签。
+
+一、模板引擎的本质
+
+模板引擎的本质:将数据和模板结合起来生成html片段。所以模板引擎需要两个组成部分:模板和数据，通过数据，将模板指定的标签动态生成，方便维护。
+
+获取相关提示案例之后，所需要做的就是生成一系列的li标签，将服务器当中的所获取的结果展示给用户看，所以就是要生成一系列的li标签。
+
+最开始是使用的字符串拼接的方式生成一个又一个的li标签，然后将标签放在ul 里面。（通过字符串拼接的方式也能够生成一系列的标签）
+
+但是有一个缺点就是一旦复杂起来就会相对麻烦，在后期维护工作也会非常麻烦。所以就可以使用模板引擎
+        使用步骤如下:
+
+1、引入js文件
+
+<script type=" text/ javascript" src=" template. Js”></script>
+
+2、定义模板
+
+    1. 模板的type-text/html 
+    2.给模板配一个id  data.s-->
+
+<!-- <script type=" text/html" id=" resultTemplate">
+    {{each s as value i}}   
+    <li>   
+    <div>   
+    <span>结果{{i}}:</span>  
+    < span>{{value}}</span> 
+    </div>  
+    </li> 
+    {{/each]]
+</script>
+    //template方法的含义就是将数据和模板结合起来，生成html片段
+    var html = template("resultTemplate" ,data);
+    console . log(html);
+    //var liTag = "";
+    //for(var i=0; i<data.s. length;i++){
+    //var temp = data.s[i] ];
+    //liTag += "<li>"+temp+"</li>" ;
+    //liTag+="<li><div><span>
+    结果+i+" :</span><span>"+temp+"</span></div></li>"
+    // var ulTag = document . querySe lector( "ul" ) ;
+    // ulTag. innerHTML = liTag
+    //var ulTag= document . querySelector("ul");
+    //ulTag IinnerHTML = liTag;
+    将数据和模板结合起来生成html片段
+    4、将html片段渲染到界面中 
+基本语法:
+得到数据中的值{{value}}
+循环操作{{each result as value i }} {/eachl}
+转义: #的使用
+这种方式比较方便，拥有层次结构，也方便后期的维护。-->
+
+<!-- 如果把isAdmin的值改为false，刷新界面将没有内容；因为有一个条件判断，只有isAdmin的值为true才会生成片段。
+
+添加提示信息（将会出现提示信息界面）：
+
+{{/if}
+
+{fif !isAdminI
+
+<h1>没有任何数据</h1>
+
+{{/if)}} -->
+<!-- 显示信息的总数量场景代码如下：
+{{if isAdmin}}
+<h1>{ititle}}</h1>
+<h2>一共有{[1ist.length}条数据</h2>
+<ul>
+{{each list as value i}}
+<li>索引{{i +1}}: {{value}}</li>
+{{/each}}
+</ul>
+
+{{/if)} -->
+
+当遇到数组时候，里面没有字段，补充为对象模式
+var data = [1,2,3];
+var temp = {}
+temp.arr = data;
+var html = template("#content").innerHTML = html
+
+-->
+<!-- <script type="text/javascript" src="./template.js"></script>
+<script id-"test" type="text/html">
+<p>不转义:{{#value}}</P>
+<p>默认转义:{{value}}</p>
+</script>
+<script>
+window.onload = function({
+//这里的数据当中包含特殊字符
+var data = {
+value:‘<span style="color : #FOo">hello world!</ span>
+};
+var html = template( 'test", data);
+document.getElementById( ' content ').innerHTML = html;
+} -->
+    
+</body>
+</html>

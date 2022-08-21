@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    </body>
+    <script>
+        // var obj1 = {
+        //     name:'西岭老师',
+        //     age:18,
+        //     fun:function(){
+        //         //在方法中的this，就是指这个方法所在的对象
+        //         var s = this.age;//这里this == obj1
+        //         console.log(s);
+        //     }
+        // }
+        // obj1.fun();//18
+
+        // function f(){
+        //     //普通的函数中也是有this的
+        //     //this 指向全局对象（window）运行环境
+        //     console.log(this.a);
+        // }
+        // f();
+
+        // // 不管在哪this永远指向一个对象
+        // // this在什么情况下什么地方，指向哪个对象
+        
+        // k = '678';
+        // function fun(){
+        //     console.log(this.k);
+        // }
+        // var o1 = {
+        //     k:'123',
+        //     f:fun,
+        // }
+
+        // var o2 = {
+        //     k:'345',
+        //     f:fun,
+        // }
+        // o1.f();//123
+        // o2.f();//345
+        // // this 运行在哪个对象下，就指向哪个对象
+        // // 如果该对象里面没有，就是undefined
+
+        var o1 = {
+            age:18,
+            fun:function(){
+                console.log(this.age);
+            }
+        }
+
+        var o2 = {
+            age:16,
+            fun:o1.fun,//== fun: console.log(this.age) 已经将该函数传过来了
+        }
+        o2.fun();//16
+
+
+    </script>
+</html>

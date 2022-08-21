@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 1、什么是数据格式
+
+将数据通过一定的规范组织起来，叫做数据格式，例如
+
+这里有一个例子：姓名，年龄和性别，组合起来发给别人，通过-连接起来，得到字符串之后，用-分割；这种数据格式是程序员规定的数据格式，可以给数据格式起任意的名字。
+
+张三%19%男-李四%23%男-王五%30%女
+
+这就是一种数据格式，这种数据格式组成的规则不通用。（Xml数据格式和Json数据格式是通用的，这样就可以在任意的数据格式之间通用，可以解析数据） -->
+
+    <!-- 
+Xml数据格式
+
+Xml数据格式是将数据以标签的方式进行组装，必须以<?xml version=“1.0"encoding="utf-8"?>开头（版本号和编码方式），标签必须成对出现，也就是有开始标签就一定要有结束标签。xml是一个通用的标准，任何人都知道该如何解析它。
+
+    <?xml version="1.0" encoding ="utf-8"?>
+    <students>
+        <student>
+            <name>张三</name>
+            <age>19</age>
+            <sex>男</sex>
+        </student>
+        <student>
+            <name>李四</nane>
+                <age>23</age>
+                <sex>男</sex>
+        </student>
+        <student>
+            <name>王五</nane>
+                <age>30</age>
+                <sex>女</sex>
+        </student>
+    </students>
+
+
+缺点：体积太大，传输慢，元数据太多，解析不方便，目前使用的很少。
+元数据：描述数据的数据，如果元数据太多太多，元数据太多会造成数据比较大，一旦比较大，那么在网络传输过程中就会比较慢，这样解析起来就会不方便
+ --> 
+
+ <!-- 
+Json 数据格式
+Json数据格式类似于js中的对象方式，通过key-value的形式组装，是一个通用的标准，任何人都知道如何解折它。
+（key:相当于"student"；value:是一个数组）
+
+{
+"student": {
+    {
+    "name":"张三"
+    "age":"19",
+    "sex":"男" 
+    },
+    
+    {
+    
+    "name":"李四"
+    "age":"23",
+    "sex":"男"
+    }
+}
+
+优点：体积小，传输快，解析方便
+元数据比Xml数据格式中的元数据要少很多；
+是以key-value的形式组装起来，那么就把json格式的字符串转换位json对象，转换为对象之后就可以用点点点的方式，来进行一些数据的访问，会很方便。
+
+
+
+  -->
+
+     
+
+</body>
+
+</html>

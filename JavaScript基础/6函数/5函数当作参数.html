@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    </body>
+    <script>
+
+        // //函数也是一种数据类型
+        // function fn(){
+            
+        // }
+        // //function 数据类型--对象（数组，函数）
+        // console.log(typeof fn);
+        // function fn(s){
+        //     var k = 123 + s;
+        //     console.log(k);
+        // }
+        
+        
+        
+        // function f1(s){
+        //     s();
+        // }    
+
+        // var f2 = function(){
+        //     console.log(222);
+        // }
+
+        // //f2函数会当作值，传入fn函数内
+        //回调
+        // f1(f2);
+        function f1(){
+            var a = 10;
+            var f2 = function(){
+                alert(2);
+            }
+            return f2;//函数作为值返回到外面
+        }
+
+        //闭包
+        var k = f1();
+        k();//2
+    </script>
+
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    </body>
+    <script>
+        
+        if(1>2){
+            
+            console.log(1);
+        }
+        console.log(2);//执行
+        
+
+        // if(判断条件)
+        if(2>1){
+            // 条件成立，{代码}执行
+            console.log(1);//执行
+        }else if(3>5){
+            //if else if 起哪个条件先成立哪{代码}就会执行
+            // 如果有代码执行，那么后面的条件不管成立还是不成立都不会执行 
+            console.log(3);
+        }else{
+            // 如果前面条件都不成立，执行else代码
+            console.log(5);
+        }
+        console.log(2);//执行
+        
+        var n = 7;
+        if(n%2 == 0){
+            console.log('偶数');
+        }else{
+            console.log('奇数');//奇数
+        }
+        // 判断闰年：能被4整除，但是不能被100整除或者能被400整除的年份
+        var year = 2016;
+        if(year%4 == 0){
+            if(year%100 != 0){
+                console.log('闰年');//执行
+            }else if(year%400 == 0){
+                console.log('闰年');
+            }else{
+                console.log('平年');
+            }
+        }else{
+            console.log('平年');
+        }
+
+    </script>
+</html>

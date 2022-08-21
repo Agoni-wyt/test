@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘宝关键字提示</title>
+    <script src="myunitl.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        window.onload = function () {
+            var btn = document.querySelector("#btn");
+            btn.onclick = function () {
+                var keywordValue = document.querySelector("#keyword").value;
+                //使用jQuery实现获取跨域数据
+                //跨域必须使用打他Type:"jsonp"，来指定key值
+                //key默认是callback
+                // value的值以jQuery开头的字符串，这个字符串就是函数调用的名称
+                $.ajax({
+                    url:"https://suggest.taobao.com/sug",
+                    data:{q:keywordValue},
+                    success:function(data){
+                        console.log(data)
+                    },
+                    dataType:"jsonp",
+                    jsonp:"callback",
+                    jsonpCallback:"haha",
+                })
+
+                /*自定义方法 
+                myAjax({
+                    url: "https://suggest.taobao.com/sug",
+                    data: { q: keywordValue },
+                    success: function (data) {
+                        console.log(data);
+                        var liTag = "";
+                        for (var i = 0; i < data.result.length; i++) {
+                            var temp = data.result[i];
+                            var tempSug = temp[0];
+                            liTag += "<li>" + tempSug + "</li>"
+                            // console.log(liTag)
+                        }
+                        var ulTag = document.querySelector("ul");
+                        ulTag.innerHTML = liTag;
+                    }
+                }); */
+                /*                 
+                                var script = document.createElement("script");
+                                script.src = "https://suggest.taobao.com/sug?q="+keywordValue+"&"+"callback=hehe";
+                            window["hehe"] = function(data){
+                                console.log(data);
+                                var liTag = "";
+                                for(var i=0;i<data.result.length;i++){
+                                    var temp = data.result[i];
+                                    var tempSug = temp[0];
+                                    liTag += "<li>"+tempSug+"</li>"
+                                    // console.log(liTag)
+                                }
+                                var ulTag = document.querySelector("ul");
+                                ulTag.innerHTML = liTag;
+                            }
+                
+                            var head = document.querySelector("head");
+                            head.appendChild(script); */
+
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <input type="text" id="keyword" placeholder="请输入关键字">
+    <input type="button" id="btn" value="查询">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+</body>
+
+</html>

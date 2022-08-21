@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+        <style>
+            #log{
+                width: 300px;
+                height: 300px;
+                background-color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>click me</p>
+        </div>
+        <div id="log"></div>
+        <a href="www.baidu.com">百度</a>
+
+
+
+
+
+        <script>
+            /* 
+            event.currentTarget         事件监听者
+            event.target                事件的目标
+            event.delegateTarget        事件的委托者
+            event.pageX                 鼠标相对于文档左边缘位置
+            event.pageY                 鼠标相对于文档上边缘的位置
+            event.type                  获取当前的事件类型
+            event.preventDefault()      阻止默认事件
+            event.stopPropagation()     阻止冒泡事件，用法同上
+
+            
+            
+            */
+
+            // $(function(){
+            //     $("div").on("click",function(){
+            //         console.log($(e.currentTarget));//div 事件监听者
+            //         console.log($(e.target));//p  事件目标
+            //         console.log($(this));//div
+                    
+            //     })
+            // })
+
+/*             $(function(){
+                $("div").on("click","p",function(e){
+                    console.log($(this).html());//click me
+                    console.log($(e.delegateTarget));//div
+                    ($(e.delegateTarget)).css("border","1px solid red")//点击出现红色边框
+                })
+            }) */
+
+/*             $(function(){
+                 $("#log").on("click",function(e){
+                console.log("pagex="+e.pageX+"  pagey="+e.pageY)
+                alert(e.type)
+            })
+            }) */
+           
+            $(function(){
+                $("a").click(function(e){
+                    e.preventDefault();//阻止默认事件
+                    alert("adsad")
+                })
+            })//点击标签会弹出窗口，如果不阻止会跳转到百度页面。
+        </script>
+    
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    </body>
+    <script>
+        var s = 'adsdf';
+        console.log(s.length);//长度属性// 5
+
+        var n = s.indexOf('d');//找出该字符第一次出现的位置
+        console.log(n);//1
+
+        var k = s.substring(2,4);//从指定位置开始，到指定字数的字符substring(star,end)不包括end位置字符
+        console.log(k);//sd
+        
+        var sc = 'JavaScript';
+        var i = sc.toLowerCase();//将全部字符转为小写字符串
+        console.log(i);
+        var d = sc.toUpperCase();//将全部字符转为大写字符串
+        console.log(d);
+
+        var t = sc.replace('a','k');//replace(old,new)将在字符串中查找第一个old字符串，并替换为new字符串
+        //原字符串不会改变
+        console.log(t);//JkvaScript
+    
+        var bl = '  adds14 33ll   ';
+        var ns = bl.trim();//删除一个字符串两端的空白字符（space， tab， no-breaks pace等）
+        console.log(ns);//adds14 33ll
+    </script>
+</html>

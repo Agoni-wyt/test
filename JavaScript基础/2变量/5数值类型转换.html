@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    </body>
+    <script>
+       /*数值类型转换
+       // var a = '1';
+        // var b = Number(a);
+        // console.log(typeof b);//Number
+
+        var c = Number('c');
+        var d = Number(null);
+        var e = Number(undefined);
+
+        console.log(c,d,e);//NaN 0 NaN
+
+        // 转为整形数值
+        var a = parseInt('2');
+        var b = parseInt('k23');
+        var c = parseInt(null);
+        var d = parseInt(undefined);
+
+        console.log(a,b,c,d);//2 NaN NaN NaN
+        // // 只有开头数值能够进行转换显示，其它皆为NaN
+        
+        // 同理parseFloat()转为浮点型
+        var a = parseFloat('1.23df');
+        var b = parseFloat('1.3.4.5');
+        var c = parseFloat(null);
+        var d = parseFloat(undefined);
+        var e = parseFloat('h43');
+
+        console.log(a,b,c,d,e);//1.23 1.3 NaN NaN NaN
+        // 只识别前面能够识别的
+        */
+
+        //布尔类型
+        var a = Boolean('0');
+        var b = Boolean(0);
+        var c = Boolean('2');
+        var d = Boolean(null);
+        var e = Boolean(undefined);
+        var f = Boolean('');
+        console.log(a,b,c,d,e);//true false true false false false
+        // 字符串中只要有内容（空格也行）就是ture，否则为false
+
+    </script>
+</html>

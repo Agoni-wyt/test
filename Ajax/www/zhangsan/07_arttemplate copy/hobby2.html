@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱好信息</title>
+    <script src="arttemplate.js"></script>
+    <script type="text/html" id="result">
+
+
+        <h2>一共有{{list.length}}条数据</h2>
+        <ul>
+            <!-- {{each 对象 值 索引}} {{/each}}-->
+            {{each list as value i}}
+            <li>索引{{i+1}}：{{value}}</li>
+            {{/each}}
+        </ul>
+        <p>不转义：{{#tag}}</p>
+        <p>默认转义：{{tag}}</p>
+    </script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var data = ['文艺','博客','摄影','电影','民谣','旅行','吉他']
+            var obj = {};
+            obj.list = data;//将data数组放入对象中
+            obj.tag = '<span style="color:#F00">hello world！</span>'
+
+            var html = template("result",obj);
+            var divresult = document.querySelector("#content")
+            divresult.innerHTML = html;
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="content">
+        <h1>标题</h1>
+        <ul>
+            <li>爱好</li>
+        </ul>
+    </div>
+
+    
+</body>
+</html>

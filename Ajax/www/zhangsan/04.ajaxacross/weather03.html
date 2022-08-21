@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨域</title>
+    <!-- <script src="jquery-3.5.1.min.js"></script> -->
+    <script>
+        function foo(data){
+            console.log(data);
+        }
+    </script>
+    <!-- <script type="text/javascript" src="http://www.zhangsan.com/04.ajaxacross/data.php"></script> -->
+    <script>
+        // console.log(str);
+         window.onload = function(){
+
+            var btn = document.querySelector("#btn");
+            btn.onclick = function(){
+                var cityname = document.querySelector("#city").value;
+                // 动态创建script标签
+                var script = document.createElement("script");
+                script.src = "http://www.lisi.com/data.php?city="+cityname;
+
+                var head = document.querySelector("head");
+                head.appendChild(script);
+
+                // console.log(cityname);
+            }
+        }
+       
+    </script>
+</head>
+<body>
+    <h1>天气信息查询</h1>
+    <input type="text" id="city" placeholder="请输入城市名称">
+    <input type="button" id="btn" value="查询">
+</body>
+</html>

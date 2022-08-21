@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+        <style>
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: beige;
+                overflow: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <p>哈哈哈哈哈</p>
+        <div id="d1">asdsfscdfdfdsfs
+            
+            fdsfasdasdasdasdsddddda
+            sadsadsadsadasdsadsadsadsad</div>
+    
+
+
+
+    <script>
+        /* 
+        1浏览器事件
+            .error()被弃用的事件，出现错误的处理事件。不建议使用
+            .resize()改变页面大小，为window绑定
+            .scroll()滚动事件，可以跟多个绑定。
+
+        2文档加载事件
+        jQuery中使用ready和load
+            ready事件： ready 事件在 DOM 结构绘制完成之后就会执行。这样能确保就算有大量的媒体文件没加载出来， JS 代码一样可以执行。
+            load事件：load 事件必须等到网页中所有内容全部加载完毕之后才被执行。如果一个网页中有大量的图片的话，则就会出现这种情况：网页文档已经呈现出来，但由于网页数据还没有完全加载完毕，导致 load 事件不能够即使被触发。
+        js中使用onready和onload
+        3文档加载过程
+            （1）解析 HTML 结构。
+            （2）加载外部脚本和样式表文件
+            （3）解析并执行脚本代码。
+            （4）构造 HTML DOM 模型。// ready
+            （5）加载图片等外部文件。
+            （6）页面加载完毕。// load
+        */
+
+        // $(function(){
+        //     $(window).scroll(function(){
+        //         alert("哈哈哈哈");
+        //     });//页面滚动提示哈哈哈哈
+        // })
+
+
+        // $(function(){
+        //     $("#d1").scroll(function(){
+        //         alert("cccc");
+        //     });//页面滚动提示cccc
+        // })
+
+
+        // $(function(){
+        //     $(window).resize(function(){
+        //         alert("页面大小变了");
+        //     });//页面滚动提示页面大小变了
+        // })
+
+        // ready的三种写法：
+        $().ready(function(){
+
+        })
+        $(document).ready(function(){
+
+        })
+        $(function(){
+
+        })
+        
+    </script>
+    </body>
+</html>

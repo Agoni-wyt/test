@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 只有函数可以制造作用域
+    // 只要有代码，就至少有一个作用域--全局作用域
+    // 有函数就会生成另一个作用域
+    var a = 1;
+    function f1(){
+        var a = 6;//如果注释结果为 1
+        function f2(){
+            var a = 5;// 如果注释结果为 6
+            function f3(){
+                var a = 4;// 如果注释掉结果为 5
+                console.log(a);
+            }
+            f3()
+        }
+        f2()
+    }
+    f1();// 4
+    //当函数中使用某个变量时，优先在自己的作用域中查找，如果找不到将会向上一层作用域查找
+    // 如果找不到，继续往上查找，直到全局作用域，如果找不到，报错
+    // 及  《作用域链》
+
+</script>
+</html>

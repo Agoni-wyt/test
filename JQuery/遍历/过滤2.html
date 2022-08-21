@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+<!--1         <ul>
+            <li>li 1</li>
+            <li>li 2</li>
+            <li>li 3</li>
+            <li>li 4</li>
+        </ul> -->
+<!-- 2
+        <ul>
+            <li>li 1</li>
+            <li>li 2</li>
+            <li>
+                <strong>s1</strong>
+            </li>
+            <li><button>按钮</button></li>
+            <li>
+                <strong>s2</strong>
+                <strong>s3</strong>
+            </li>
+            <li>li 3</li>
+            <li>li 4</li>
+        </ul> -->
+
+        <ul>
+            <li>list <strong>item 1</strong></li>
+            <li><span>list item 2</span></li>
+            <li>list item 3</li>
+        </ul>
+
+
+
+    <script>
+/* 1        
+        $(function(){
+            $("li").first().css("background-color","yellow");//选择li中第一个标签，更改样式，不接受参数
+            $("li").last().css("background-color","yellow");//选择li中最后一个元素更改样式，不接受参数
+        }) */
+
+
+/* 2
+        $(function(){
+            $("li").has("strong").css("background-color","blue");
+        }) */
+
+        $(function(){
+            $("ul").click(function(event){
+                var target = $(event.target);
+                if(target.is("li")){
+                    target.css("background-color","yellow")
+                }
+            })//点击item1和item2时不会变色，只有点击list和list item3会变色
+        })
+
+
+
+        /* 
+        .first()    获取匹配元素集合中第一个元素。不接受任何参数
+        .last()     获取匹配元素集合中最后一个元素。
+        .has()      筛选匹配元素集合中的那些有相匹配的选择器或 DOM 元素的后代元素。
+        .is()       判断当前匹配的元素集合中的元素，是否为一个选择器，DOM 元素，或者 jQuery 对象，如果这些元素至少一个匹配给定的参数，那么返回 true。Is方法不是创建新的jQuery 对象，它允许检测jQuery 对象中的内容，比如选择器，DOM 元素，或者 jQuery 对象，而无需修改该对象，判断即可，通常是在回调函数内使用该方法，比如事件处理。
+        */
+    </script>
+    </body>
+</html>

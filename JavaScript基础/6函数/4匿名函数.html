@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    </body>
+    <script>
+        // //匿名函数，函数本身是没有名字的
+        // var fun = function(){
+        //     console.log(1);
+        // }
+        // fun();
+        
+        //立即执行函数，自调用匿名函数(函数体)()
+        (function(){
+            alert(123);
+        })();
+        //作用域；
+        //防止全局变量的污染，封装一个局部作用
+
+    </script>
+</html>

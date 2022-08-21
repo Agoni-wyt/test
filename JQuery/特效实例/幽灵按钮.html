@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="D:\ps class\前端学习\JQuery\特效实例\app.css" rel="stylesheet" type="text/css">
+    <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+</head>
+
+
+<body>
+<!-- 幽灵按钮:
+也叫透明按钮,顾名思义,也就是在设计网页中的按钮之时,不再设计复杂色彩、样式和纹理,而是外仅以线框示意轮廓,只脑示意功能，背景透出,与整个页面背景合而为-的设计方式。 -->
+
+<div class="box">
+    <div class="link link-miss" >
+        <span class="icon"></span>
+        <a href="#" class="button" data-text="MY miss is clear">
+            <span class="line line-top"></span>
+            <span class="line line-left"></span>
+            <span class="line line-right"></span>
+            <span class="line line-bottom"></span>
+            MISSION
+        </a>
+    </div>
+
+    <div class="link link-play" >
+        <span class="icon"></span>
+        <a href="#" class="button" data-text="This is my playground">
+            <span class="line line-top"></span>
+            <span class="line line-left"></span>
+            <span class="line line-right"></span>
+            <span class="line line-bottom"></span>
+            PLAY
+        </a>
+    </div>
+
+    <div class="link link-touch" >
+        <span class="icon"></span>
+        <a href="#" class="button" data-text="Lets do something together">
+            <span class="line line-top"></span>
+            <span class="line line-left"></span>
+            <span class="line line-right"></span>
+            <span class="line line-bottom"></span>
+            TOUCH
+        </a>
+    </div>
+
+    <div class="tooltip">
+        <em></em>
+        <span></span>
+    </div>
+
+</div>
+
+<script>
+    $(function(){
+        $(".button").hover(function(){
+            var titleText = $(this).attr("data-text");
+            $(".tooltip em").text(titleText);//动态获取内容，并添加
+            //获取距离左边的位置
+            var leftLoc = $(this).offset().left;
+            var addleft = ($(".tooltip").outerWidth()-$(this).outerWidth())/2;
+            $(".tooltip").css({
+                left:leftLoc-addleft,/* 将距离赋给提示框，声明需要移动左边的距离变量addleft，因为是自适应的一个宽度，所以要动态获取tooltip，然后减去当前bottom的宽度。 */
+                top:140
+
+            }).animate({
+                top:195,
+                opacity:1
+            },200);
+            $(".tooltip").fadeToggle(200)            
+        },function(){
+            $(".tooltip").fadeOut(200)
+        })
+
+    })
+</script>
+
+</body>
+
+</html>

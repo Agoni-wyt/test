@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+        position: absolute;
+    }
+    button{
+        position: absolute;
+    }
+</style>
+
+<body>
+
+    <div></div>
+
+    <button>停止动画</button>
+    
+
+    <script>
+/* 1        
+        $(function () {
+            $("div").click(function () {
+                $(this).animate({
+                    opacity: 0.2,
+                    width: 400,//[400,"swing"]
+                    left: 100
+                }, "2000", "swing", function () {
+                    alert('动画执行完毕');
+                }),
+                    $(this).animate({
+                        opacity: 1,
+                        width: 200,
+                        left: 8
+                    }, 2000, "linear", function () {
+                        alert("动画完毕执行")
+                    }),
+                    $(this).animate()
+
+            })
+        })//linear:线性  swing：曲线性 */
+
+
+        $(function(){
+            var div = $("div");
+            div.click(function(){
+                $(this).animate({
+                    width:"500px",
+                    opacity:0.2,
+                    left:200
+                },4000,"linear").delay(1000),//delay()一秒后在执行下一个动画
+                $(this).animate({
+                    width:"200px",
+                    opacity:1,
+                    left:8
+                },4000,"swing",function(){
+                    alert("动画执行完毕")
+                })
+            })
+
+            $("button").click(function(){
+                // div.clearQueue();//把队列中的未执行的动画移除，可以接收参数，为动画名称
+                // div.finish()//直接结束所有动画，并跳到结束状态
+
+                div.stop()
+
+
+            })
+
+        })
+
+
+        /* 
+        .animate()      根据css属性执行动画,里面有参数：属性样式{对象形式}，执行时间？，完成后的回调function()？
+        .clearQueue()   从列队中移除所有未执行的项。
+        .delay()        设置一个延时来推迟执行队列中后续的项。
+        .finish()       停止当前正在运行的动画,删除所有排队的动画,完成匹配元素所有的动画。
+        .stop()         停止匹配元素当前正在运行的动画。
+
+        */
+
+
+    </script>
+
+</body>
+
+</html>

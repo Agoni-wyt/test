@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+<!--1         
+        <p>p1</p>
+        <p class="one">p2</p>
+        <p>p3</p>
+        <div>d1</div> -->
+<!-- 2
+        <ul class="one">
+            <li>li 1</li>
+            <li class="two">li 2
+                <ul class="three">
+                    <li>item 1</li>
+                    <li class="inner">item 2</li>
+                    <li>item 3</li>
+                </ul>
+            </li>
+            <li>li 3</li>
+            <li>li 4</li>
+            <li>li 5</li>
+            <div>2</div>
+            <div>3</div>
+        </ul> -->
+
+        <dl>
+            <dt id="term-1">d1</dt>
+            <dd>1a</dd>
+            <dd>1b</dd>
+
+            <dt id="term-2">d2</dt>
+            <dd>2a</dd>
+            <dd>2b</dd>
+
+            <dt id="term-3">d3</dt>
+            <dd>3a</dd>
+            <dd>3b</dd>
+        </dl>
+        
+
+        <script>
+/* 1
+            $(function(){
+                $(".one").next("div").css("background-color","yellow");//无参数默认选择紧邻的下一个，有参数，找出满足选择器的元素。div:2
+
+
+            }) */
+/* 2
+            $(function(){
+                $(".two").nextAll("div").css("background-color","pink");//无参数，默认选择下面的所有同辈元素（不包括自身），有参数，满足参数("div"),选择类型为div的元素.div:2,3
+            }) */
+
+            $(function(){
+                // $("#term-2").nextUntil("dt").css("background-color","blue"); //.netUntil("标签")直到匹配到标签（不包括该标签元素）
+
+                var term3 = $("#term-3");
+                $("#term-1").nextUntil(term3,"dd").css("color","pink");//.nextUntil("选择器"，"类型")，直到是该类型的选择器
+
+            })
+
+            /* 
+            .next()         取得匹配的元素集合中每一个元素紧邻的后面同辈元素的元素集合。如果提供一个选择器，那么只有紧跟着的兄弟元素满足选择器时，才会返回此元素。
+            .nextAll()      获得每个匹配元素集合中所有下面的同辈元素，选择性筛选的选择器。.nextAll()与.next()的区别，.next()只取得紧邻的后面同辈元素而.nextAll()是选择所有下面的同辈元素。
+            .nextUnity()    通过选择器， DOM 节点，或 jQuery 对象得到每个元素之后的所有兄弟元素，但不包括匹配的元素。一个参数：
+            
+            */
+
+        </script>
+    </body>
+</html>

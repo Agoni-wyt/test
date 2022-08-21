@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱好信息</title>
+    <script src="arttemplate.js"></script>
+    <script type="text/html" id="result">
+        {{if isAdmin}}
+        <h1>{{title}}</h1>
+        <h2>一共有{{list.length}}条数据</h2>
+        <ul>
+            <!-- {{each 对象 值 索引}} {{/each}}-->
+            {{each list as value i}}
+            <li>索引{{i+1}}：{{value}}</li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var data ={
+                title:'条件判断例子',
+                isAdmin: true,//如果把isAdmin的值改为false，刷新界面将没有内容；因为有一个条件判断，只有isAdmin的值为true才会生成片段。
+                list:['文艺','博客','摄影','电影','民谣','旅行','吉他']
+            };
+            data.count = data.list.length//为data对象添加一条count数据存储list的长度
+            var html = template("result",data);
+            var divresult = document.querySelector("#content")
+            divresult.innerHTML = html;
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="content">
+        <h1>标题</h1>
+        <ul>
+            <li>爱好</li>
+        </ul>
+    </div>
+
+    
+</body>
+</html>

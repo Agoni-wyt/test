@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+    </head>
+    <style>
+        textarea{
+            height: 35px;
+        }
+        div{
+            color: red;
+        }
+        fieldset{
+            margin: 0;
+            padding: 0;
+            border-width: 0;
+        }
+        .marked{
+            background-color: yellow;
+            border: 3px solid red;
+        }
+    </style>
+    <body>
+        <form>
+            <fieldset>
+                <input type="button" value="Input Button"/>
+                <input type="checkbox"/>
+                <input type="file">
+                <input type="hidden">
+                <input type="image">
+                <input type="password">
+                <input type="radio">
+                <input type="reset">
+                <input type="submit">
+                <input type="text">
+                <select ><option>Option</option></select>
+                <textarea></textarea>
+                <button>Botton</button>
+            </fieldset>
+            <br>
+            <br>
+            <input name="email" disabled="disabled">
+            <input name="id">
+        </form>
+
+
+
+        <script>
+            //1  (":button")选择所有按钮和类型为按钮的元素
+            //2  (":checkbox")选择所有类型为复选框的元素
+            //3  (":checked")匹配所有勾选的元素
+            //4  (":disabled")选择所有被禁用的元素
+            //5  (":enabled")选择所有可用的元素
+            //6  (":file")选择所有类型为文件的元素
+            //7  (":focus")选择当前获取焦点的元素
+            //8  (":image")选择所有为图像类型的元素
+            //9  (":input")选择所有input，textarea，select和button元素
+            //10 (":password")选择所有类型为密码的元素
+            //11 (":radio")选择所有类型为单选框的元素
+            //12 (":submit")选择所有类型为提交的元素
+            $(function(){
+                var input=$("input:text").addClass("marked")
+                $("input:disabled").val("被禁用")
+                
+            })
+
+
+        </script>
+    </body>
+</html>

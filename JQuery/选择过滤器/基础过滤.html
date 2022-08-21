@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="D:\ps class\前端学习\JQuery\jquery-3.5.1.min.js"></script>
+    <!-- 1<style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            float: left;
+            border: 1px solid #aaaaaa;
+            margin: 0 5px;/*外边距*/
+        }
+        .colored{
+            background-color: green;
+        }
+    </style> -->
+    <style>
+        .focused {
+            background-color: #abcdef;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- 1<button id="run">run</button>
+    <div></div>
+    <div id="mover"></div>
+    <div></div> -->
+
+
+    <!--2 <div id="content">
+        <input tabindex="1">
+        <input tabindex="2">
+        <select tabindex="3">
+            <option>select menu</option>
+        </select>
+        <div tabindex="4">
+            a div
+        </div>
+
+    </div> -->
+
+    <table border="1">
+        <tr><td>TD #0</td><td>TD #1</td><td>TD #3</td></tr>
+        <tr><td>TD #0</td><td>TD #1</td><td>TD #3</td></tr>
+        <tr><td>TD #0</td><td>TD #1</td><td>TD #3</td></tr>
+    </table>
+
+
+
+
+    <script>
+        // $(function(){
+        //     $("#run").click(function(){//点击id为run的元素（button）
+        //         $("div:animated").toggleClass("colored");//$(":animated")选择正在执行动画效果的元素
+        //     });//执行样式colored
+
+        //     function animatedIt(){//动画函数
+        //         $("#mover").slideToggle("slow",animatedIt);//选择id为mover的div元素
+        //     }//执行用滑动动画显示或隐藏某个元素，slow代表六百毫秒的延时
+        //     animatedIt();//别忘了调用函数
+        // })
+
+        
+        /* 2        $(function () {
+            $("#content").delegate("*", "focus blur", function (event) {
+                var e=$(this)
+                setTimeout(function(){
+                    e.toggleClass("focused",e.is(":focus"))
+                },0)
+
+
+            })
+        }) */
+
+         $("td:lt(4)").css("color","red")//索引值小于4的（不包括本身0123）
+
+
+
+
+
+        /*
+        1    $(":eq(索引值)")     索引值代表要匹配元素的索引值（从0开始计数），索引值可以为负数，代表从最后一个元素开始倒计数
+            $(":even")          选择索引值为偶数的元素，从0开始计数，即选择第一个元素，第三个元素。。。
+            $(":odd")           选择索引值为奇数，第0个第2个
+            $(":first")         选择第一个匹配的元素
+        2    $("focus")          选择当前获取焦点的元素
+            $(":header")        选择所有标题元素，例如h1,h2,h3等
+            $(":last")          选择最后一个匹配的元素
+            $(":gt(索引值)")或$(":gt(-索引值)")         选择匹配集合中所有大于给定索引值的元素
+        3    $(":Lt(索引值)")或$(":Lt(-索引值)")           选择匹配集合中所有小于给定索引值的元素
+            $(":not(元素选择器)")     选择所有元素，去除不匹配给定选择器的元素
+
+     
+        
+        
+        */
+    </script>
+</body>
+
+</html>

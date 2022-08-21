@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    </body>
+    <script>
+        // // 实例化构造函数获取时间对象
+        // var da = new Date();
+        // console.log(da);//Fri Jul 22 2022 15:28:36 GMT+0800 (中国标准时间)
+        
+        // var n = Date.now;
+        // console.log(n);
+
+        var da = new Date()
+        console.log(da.getHours());//返回小时
+
+        console.log(da.getDate());//返回日期
+
+        console.log(da.getFullYear());//返回年份
+
+        //js中获取的时间是计算机本地时间
+        // 月份的数字是从0开始的，获取正常月份需加一
+        console.log(da.getMonth());//获取月份-1
+        console.log(da.getMonth()+1);//正常月份
+
+    </script>
+</html>
